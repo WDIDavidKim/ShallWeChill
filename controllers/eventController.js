@@ -1,27 +1,27 @@
 var db = require('../models');
 
 function index(req, res) {
-  // db.Album.find({}, function(err, allEvents) {
-  //   res.json(allEvents);
-  // });
+  db.event.find({}, function(err, allEvents) {
+    res.json(allEvents);
+  });
 }
 
 function create(req, res) {
-  // var newEvent = new db.Event({
-  //   eventName: req.body.name,
-  //   description: req.body.name,
-  //   location: req.body.name,
-  //   time: integer,
-  //   attendees: [ user.schema ]
-  //
-  // });
-  // console.log(newAlbum);
-  // newAlbum.save(function newAlbumSaved(err, saveAlbum){
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   res.json(saveAlbum);
-  // });
+  var newEvent = new db.Event({
+    eventName: req.body.name,
+    description: req.body.name,
+    location: req.body.name,
+    // time: integer,
+    // attendees: [ user.schema ]
+
+  });
+  console.log(newEvent);
+  newEvent.save(function newEventSaved(err, saveEvent){
+    if (err) {
+      console.log(err);
+    }
+    res.json(saveEvent);
+  });
 }
 
 function show(req, res) {
