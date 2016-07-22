@@ -15,9 +15,10 @@ app.get('/', function homepage (req, res) {
 
 
 app.get('/api/events', controllers.events.index);
-app.post('/api/events', controllers.albums.create);
-
-
+app.get('/api/events/:eventId', controllers.events.show);
+app.post('/api/events', controllers.events.create);
+app.delete('/api/events/:eventId', controllers.events.destroy);
+// app.put('/api/albums/:albumId', controllers.albums.update);
 
 
 

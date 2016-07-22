@@ -1,31 +1,31 @@
 var db = require('../models');
 
 function index(req, res) {
-  db.Event.find({}, function(err, allEvents) {
-    res.json(allEvents);
+  db.User.find({}, function(err, allUsers) {
+    res.json(allUsers);
   });
 }
 
 function create(req, res) {
-db.Event.create(req.body, function(err, event) {
+db.User.create(req.body, function(err, user) {
     if (err) { console.log('error', err); }
-    console.log(event);
-    res.json(event);
+    console.log(user);
+    res.json(user);
   });
 }
 
 function show(req, res) {
-db.Event.findById(req.params.eventId, function(err, foundEvent) {
+db.user.findById(req.params.eventId, function(err, foundUser) {
     if(err) { console.log('eventsController.show error', err); }
-    console.log('eventsController.show responding with', foundEvent);
-    res.json(foundEvent);
+    console.log('eventsController.show responding with', foundUser);
+    res.json(foundUser);
    });
  }
 
 
 function destroy(req, res) {
-db.Event.findOneAndRemove({ _id: req.params.eventId }, function(err, foundEvent){
-      res.json(foundEvent);
+db.User.findOneAndRemove({ _id: req.params.eventId }, function(err, foundUser){
+      res.json(foundUser);
     });
 }
 

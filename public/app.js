@@ -1,9 +1,9 @@
 $(document).ready(function() {
   console.log('app.js loaded!');
-  // $.get('/api/albums').success(function (albums) {
-  //   albums.forEach(function(album) {
-  //     renderAlbum(album);
-  //   });
+  $.get('/api/events').success(function (events) {
+    events.forEach(function(event) {
+      renderEvent(event);
+    });
   });
 
 
@@ -12,7 +12,7 @@ $('#event-form form').on('submit', function(e) {
     var formData = $(this).serialize();
     console.log('formData', formData);
     $.post('/api/events', formData, function(event) {
-      console.log('album after POST', event);
+      console.log('event after POST', event);
       renderEvent(event);
     });
     $(this).trigger("reset");
