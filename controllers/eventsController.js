@@ -6,15 +6,22 @@ function index(req, res) {
   });
 }
 
-db.Event.create(req.body, function(err, album) {
-   if (err) { console.log('error', err); }
-   console.log(Event);
-   res.json(event);
-});
+function create(req, res) {
+db.Event.create(req.body, function(err, event) {
+    if (err) { console.log('error', err); }
+    console.log(event);
+    res.json(event);
+  });
+}
 
 function show(req, res) {
+db.Event.findById(req.params.eventId, function(err, foundEvent) {
+    if(err) { console.log('eventsController.show error', err); }
+    console.log('eventsController.show responding with', foundEvent);
+    res.json(foundEvent);
+   });
+ }
 
-}
 
 function destroy(req, res) {
 
