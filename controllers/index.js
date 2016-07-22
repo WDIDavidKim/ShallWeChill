@@ -1,1 +1,1 @@
-module.exports.event = require('./eventController');
+module.exports.events = require('./eventsController');

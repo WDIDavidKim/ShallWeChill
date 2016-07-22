@@ -8,7 +8,14 @@ app.use('/vendor', express.static(__dirname + '/bower_components'));
 
 var controllers = require('./controllers');
 
-app.get('/api/event', controllers.event.index);
+app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+
+
+app.get('/api/events', controllers.events.index);
+app.post('/api/events', controllers.albums.create);
 
 
 
