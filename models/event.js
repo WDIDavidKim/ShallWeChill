@@ -8,8 +8,7 @@ var EventSchema = new Schema({
   description: String,
   location: String,
   time: String,
-  attendees: String
-
+  date: String
 });
 
 var Event = mongoose.model('Event', EventSchema);

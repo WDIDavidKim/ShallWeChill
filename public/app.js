@@ -5,17 +5,4 @@ $(document).ready(function() {
       renderEvent(event);
     });
   });
-
-
-$('#event-form form').on('submit', function(e) {
-    e.preventDefault();
-    var formData = $(this).serialize();
-    console.log('formData', formData);
-    $.post('/api/events', formData, function(event) {
-      console.log('event after POST', event);
-      renderEvent(event);
-    });
-    $(this).trigger("reset");
-  });
-
 });

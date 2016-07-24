@@ -18,7 +18,15 @@ app.get('/api/events', controllers.events.index);
 app.get('/api/events/:eventId', controllers.events.show);
 app.post('/api/events', controllers.events.create);
 app.delete('/api/events/:eventId', controllers.events.destroy);
-// app.put('/api/albums/:albumId', controllers.albums.update);
+app.put('/api/events/:eventId', controllers.events.update);
+
+app.get('/api/users', controllers.users.index);
+app.get('/api/users/:userId', controllers.users.show);
+app.post('/api/users', controllers.users.create);
+app.delete('/api/users/:userId', controllers.users.destroy);
+app.put('/api/users/:userId', controllers.users.update);
+
+
 
 
 

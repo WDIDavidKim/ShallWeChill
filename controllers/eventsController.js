@@ -30,19 +30,20 @@ db.Event.findOneAndRemove({ _id: req.params.eventId }, function(err, foundEvent)
 }
 
 function update(req, res) {
-// console.log('updating with data', req.body);
-// db.Event.findById(req.params.EventId, function(err, foundEvent) {
-//    if(err) { console.log('eventsController.update error', err); }
-//    foundEvent.eventName = req.body.eventName;
-//    foundEvent.description = req.body.description;
-//    foundEvent.location = req.body.location;
-//    foundEvent.time = req.body.time;
-//    foundEvent.save(function(err, savedEvent) {
-//      if(err) { console.log('saving altered event failed'); }
-//      res.json(savedEvent);
-//    });
-//  });
-//
+console.log('updating with data', req.body);
+db.Event.findById(req.params.eventId, function(err, foundEvent) {
+   if(err) { console.log('eventsController.update error', err); }
+   foundEvent.eventName = req.body.eventName;
+   foundEvent.description = req.body.description;
+   foundEvent.location = req.body.location;
+   foundEvent.time = req.body.time;
+   foundEvent.date = req.body.time;
+   foundEvent.save(function(err, savedEvent) {
+     if(err) { console.log('saving altered event failed'); }
+     res.json(savedEvent);
+   });
+ });
+
 }
 
 
