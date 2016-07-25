@@ -41,7 +41,7 @@ $(document).ready(function() {
   function render() {
     $eventsList.empty();
     var eventsHtml = template({ events: allEvents });
-    $eventsList.append(eventsHtml);
+    $eventsList.prepend(eventsHtml);
   }
 
   function handleSuccess(json) {
@@ -71,7 +71,7 @@ $(document).ready(function() {
     console.log('delete this event:', eventId);
     for(var i = 0; i < allEvents.length; i++) {
       if(allEvents[i]._id === eventId) {
-        allEvent.splice(i, 1);
+        allEvents.splice(i, 1);
         break;
       }
     }
