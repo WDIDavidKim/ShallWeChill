@@ -5,7 +5,7 @@ var eventsList =[
                 description: 'Start Date',
                 location: '225 Bush Street 5th floor',
                 time: '9:17pm',
-                date: 'June 27 2016'
+                date: 'June 27 2016',
               },
               {
                 eventName: 'General Assembly Dirty 30',

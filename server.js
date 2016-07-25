@@ -35,7 +35,6 @@ app.put('/api/users/:userId', controllers.users.update);
 
 
 
-
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is running on http://localhost:3000/');
 });
