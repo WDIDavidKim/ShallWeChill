@@ -38,6 +38,20 @@ $(document).ready(function() {
     });
   });
 
+  $eventsList.on('click', '.update', function() {
+    console.log("You clicked update!");
+    var eventId = $(this).attr('data-id');
+    console.log(eventId);
+    // $.ajax({
+    //   method: 'DELETE',
+    //   url: '/api/events/'+$(this).attr('data-id'),
+    //   success: deleteEventSuccess,
+    //   error: deleteEventError,
+    // });
+  });
+
+
+});
   function render() {
     $eventsList.empty();
     var eventsHtml = template({ events: allEvents });
@@ -81,6 +95,3 @@ $(document).ready(function() {
   function deleteEventError() {
     console.log("Error, the movie wasn't deleted.");
   }
-
-
-});

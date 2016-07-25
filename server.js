@@ -26,7 +26,27 @@ app.post('/api/users', controllers.users.create);
 app.delete('/api/users/:userId', controllers.users.destroy);
 app.put('/api/users/:userId', controllers.users.update);
 
+var express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
+app.use(cookieParser());
+app.use(session({
+  secret: 'PODONENUMBERONE',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 

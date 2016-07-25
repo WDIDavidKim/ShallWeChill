@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
-
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr3WJWvbwATmdkYx6OLfc_vND2EKbizS4&callback=initMap"
+    async defer></script>
+
 
     <script src="/app.js"></script>
 
@@ -55,15 +57,12 @@
           <div id='eventTarget'>
             <script id="events-template" type="text/x-handlebars-template">
               {{#each events}}
-                <p>
+                <p class="eventCard">
                   <b>{{eventName}}</b><br></br>
                   {{description}}<br></br>
-                  {{location}}
-                  {{time}}
-                  {{date}}
-                  <img src={{image}}>
+                  <span>{{location}} {{time}} {{date}}</span>
                   <button type="button" name="deleteButton" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
-                  <button type="button" name="updateButton"class="btn btn-primary pull-right" data-id={{_id}}>Update</button>
+                  <button type="button" name="updateButton"class="btn btn-primary pull-right update" data-id={{_id}}>Update</button>
                 </p>
                 <hr>
               {{/each}}
@@ -72,12 +71,12 @@
 
 
     <!-- begin songModal: this is not visible until you call .modal() on it -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
+    <!-- <div class="modal fade" tabindex="-1" role="dialog" id="songModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Create Song</h4>
+            <h4 class="modal-title"></h4>
           </div>
 
           <div class="modal-body">
@@ -128,7 +127,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
           </br>
