@@ -1,16 +1,21 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+var controllers = require('./controllers');
+var db = require("./models"),
+    Post = db.Post,
+    User = db.User,
+    express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use('/vendor', express.static(__dirname + '/bower_components'));
-
-var controllers = require('./controllers');
-
-app.get('/', function homepage (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+app.set('view engine', 'hbs');
 
 
 
@@ -26,14 +31,7 @@ app.post('/api/users', controllers.users.create);
 app.delete('/api/users/:userId', controllers.users.destroy);
 app.put('/api/users/:userId', controllers.users.update);
 
-var express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    cookieParser = require('cookie-parser'),
-    session = require('express-session'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+app.set('view engine', 'hbs');
 
 app.use(cookieParser());
 app.use(session({
@@ -48,8 +46,39 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.get('/login', function (req, res) {
+  res.render('login'); // you can also use res.sendFile
+});
 
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  // res.send('logged in!!!'); // sanity check
+  res.redirect('/'); // preferred!
+});
 
+app.get('/signup', function (req, res) {
+  res.render('signup'); // you can also use res.sendFile
+});
+app.post('/signup', function (req, res) {
+  User.register(new User({ username: req.body.username }), req.body.password,
+    function (err, newUser) {
+      passport.authenticate('local')(req, res, function() {
+        res.redirect('/');
+      });
+    }
+  );
+});
+
+app.get('/logout', function (req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect('/');
+});
+
+app.get('/', function (req, res) {
+    res.render('index', {user: JSON.stringify(req.user) + " || null"});
+});
 
 
 

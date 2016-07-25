@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Shall We Chill?</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr3WJWvbwATmdkYx6OLfc_vND2EKbizS4&callback=initMap"
+    async defer></script> -->
+    <script type="text/javascript"> window.user = {{{ user }}}</script>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Shall We Chill?</h1>
+      <h3>Welcome to your personal profile page!</h3>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <form class="form-inline" id="newEventForm">
+          <div class="form-group">
+            <br></br>
+            <label for="eventName">Event Name</label></br>
+            <input type="text" class="form-control" name="eventName" placeholder="Event Name">
+          </div>
+          </br>
+          <div class="form-group">
+            <label for="description">Description</label></br>
+            <input type="text" class="form-control" name="description" placeholder="Event Description">
+          </div>
+          </br>
+          <div class="form-group">
+            <label for="location">Location</label></br>
+            <input type="text" class="form-control" name="location" placeholder="Event Address">
+          </div>
+          </br>
+          <div class="form-group">
+            <label for="time">Time</label></br>
+            <input type="text" class="form-control" name="time" placeholder="Start Time">
+          </div>
+          </br>
+          <div class="form-group">
+            <label for="date">Date</label></br>
+            <input type="text" class="form-control" name="date" placeholder="Event Date">
+          </div>
+          </br>
+          <button type="submit" class="btn btn-success">Post Event</button>
+        </form>
+          <br></br>
+          <div id='eventTarget'>
+            <script id="events-template" type="text/x-handlebars-template">
+              \{{#each events}}
+                <p class="eventCard" data-user-id="">
+                  <b>\{{eventName}}</b><br></br>
+                  \{{description}}<br></br>
+                  <span>\{{location}} \{{time}} \{{date}}</span>
+                  <button type="button" name="deleteButton" class="deleteBtn btn btn-danger pull-right" data-id=\{{_id}}>Delete</button>
+                  <button type="button" name="updateButton"class="btn btn-primary pull-right update" data-id=\{{_id}}>Update</button>
+                </p>
+                <hr>
+              \{{/each}}
+            </script>
+          </div>
+          </br>
+          </br>
+        </div>
+      </div>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -7,10 +7,18 @@ function index(req, res) {
 }
 
 function create(req, res) {
-db.Event.create(req.body, function(err, event) {
+  var user = req.user;
+  console.log(user);
+  db.Event.create(req.body, function(err, event) {
     if (err) { console.log('error', err); }
     console.log(event);
-    res.json(event);
+    // event is created, sweet
+    var joinData = {_event: event._id, _user: user._id};
+    db.Events_Users.create(joinData, function(err,succ){
+      if (err) { console.log('error', err); }
+      console.log(succ);
+      res.json(event);
+    });
   });
 }
 

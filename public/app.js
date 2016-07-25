@@ -5,6 +5,8 @@ var allEvents = [];
 
 
 $(document).ready(function() {
+  var user = window.user;
+  console.log(user);
   console.log('app.js loaded!');
 
   $eventsList = $('#eventTarget');

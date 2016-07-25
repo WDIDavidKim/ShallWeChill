@@ -10,6 +10,6 @@ var Events_UsersSchema = new Schemas({
 
 });
 
-var User = mongoose.model('User', UserSchema);
+var Events_Users = mongoose.model('Events_Users', Events_UsersSchema);
 
-module.exports = Events_UsersSchema;
+module.exports = Events_Users;
