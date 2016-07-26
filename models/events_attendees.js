@@ -4,7 +4,8 @@ var Event = require('./event');
 var User = require('./user');
 
 
-var Events_UsersSchema = new Schemas({
+var Events_UsersSchema = new Schema({
+  _host: {type: Schema.Types.ObjectId, ref: "User"},
   _event: {type: Schema.Types.ObjectId, ref: "Event"},
   _user: {type: Schema.Types.ObjectId, ref: "User"}
 

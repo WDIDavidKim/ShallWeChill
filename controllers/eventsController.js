@@ -8,15 +8,15 @@ function index(req, res) {
 
 function create(req, res) {
   var user = req.user;
-  console.log(user);
+  console.log("USER: " , user);
   db.Event.create(req.body, function(err, event) {
     if (err) { console.log('error', err); }
-    console.log(event);
+    console.log("EVENT:  ",event);
     // event is created, sweet
-    var joinData = {_event: event._id, _user: user._id};
+    var joinData = {_event: event._id, _host: req.user._id};
     db.Events_Users.create(joinData, function(err,succ){
       if (err) { console.log('error', err); }
-      console.log(succ);
+      console.log("EVENT_USER: ", succ);
       res.json(event);
     });
   });
@@ -54,6 +54,24 @@ db.Event.findById(req.params.eventId, function(err, foundEvent) {
 
 }
 
+// function attendEvent(req,res){
+//   console.log("Looking up attendees for an event");
+//   var eventId = req.params.eventId;
+//   console.log(eventId);
+//   // db.User.find({})
+//   // set this person as a user for an event, not a host
+// }
+
+
+function allEventsByUser(req, res) {
+  console.log("Looking up all events made by user. ");
+  var userId = req.params.userId;
+  db.Events_Users.find({ _user: userId}, function allEventsByUser(err,succ){
+    if(err) { console.log('eventsController.allEventsByUser error', err); }
+    console.log(succ);
+    res.json(succ);
+  });
+}
 
 
 module.exports = {
@@ -61,5 +79,6 @@ module.exports = {
   create: create,
   show: show,
   destroy: destroy,
-  update: update
+  update: update,
+  allEventsByUser: allEventsByUser
 };

@@ -19,19 +19,6 @@ app.set('view engine', 'hbs');
 
 
 
-app.get('/api/events', controllers.events.index);
-app.get('/api/events/:eventId', controllers.events.show);
-app.post('/api/events', controllers.events.create);
-app.delete('/api/events/:eventId', controllers.events.destroy);
-app.put('/api/events/:eventId', controllers.events.update);
-
-app.get('/api/users', controllers.users.index);
-app.get('/api/users/:userId', controllers.users.show);
-app.post('/api/users', controllers.users.create);
-app.delete('/api/users/:userId', controllers.users.destroy);
-app.put('/api/users/:userId', controllers.users.update);
-
-app.set('view engine', 'hbs');
 
 app.use(cookieParser());
 app.use(session({
@@ -45,6 +32,19 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+app.get('/api/events', controllers.events.index);
+app.get('/api/events/:eventId', controllers.events.show);
+app.post('/api/events', controllers.events.create);
+app.delete('/api/events/:eventId', controllers.events.destroy);
+app.put('/api/events/:eventId', controllers.events.update);
+app.get('/api/eventsByUser/:userId', controllers.events.allEventsByUser);
+
+app.get('/api/users', controllers.users.index);
+app.get('/api/users/:userId', controllers.users.show);
+app.post('/api/users', controllers.users.create);
+app.delete('/api/users/:userId', controllers.users.destroy);
+app.put('/api/users/:userId', controllers.users.update);
 
 app.get('/login', function (req, res) {
   res.render('login'); // you can also use res.sendFile
@@ -78,6 +78,9 @@ app.get('/logout', function (req, res) {
 
 app.get('/', function (req, res) {
     res.render('index', {user: JSON.stringify(req.user) + " || null"});
+    if (!req.user) {
+      return res.redirect('/login');
+    }
 });
 
 

@@ -11,6 +11,8 @@ $(document).ready(function() {
 
   $eventsList = $('#eventTarget');
 
+  // TODO: If user != null, append id as data-id to events.
+
   var source = $('#events-template').html();
   template = Handlebars.compile(source);
 
@@ -20,12 +22,15 @@ $(document).ready(function() {
     success: handleSuccess,
     error: handleError
   });
+
   $('#newEventForm').on('submit', function(e) {
     e.preventDefault();
+    var newEvent = $(this).serialize();
+    console.log(newEvent);
     $.ajax({
       method: 'POST',
       url: '/api/events',
-      data: $(this).serialize(),
+      data: newEvent,
       success: newEventSuccess,
       error: newEventError
     });
