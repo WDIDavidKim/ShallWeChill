@@ -18,3 +18,11 @@ Technologies Used
 * RESTFUL routes
 * MongoDB
 
+Wireframe Pages
+
+Still need to fix update button, join data table, associating each user with their specific profile, disable view all on profile page.
+
+![Shall We Chill](http://i.imgur.com/qnFyLJo.png?1)
+![Shall We Chill](http://i.imgur.com/ABmpb8t.png?1)
+![Shall We Chill](http://i.imgur.com/B3huix2.png?1)
+![Shall We Chill](http://i.imgur.com/LcCoPD6.png?1)
