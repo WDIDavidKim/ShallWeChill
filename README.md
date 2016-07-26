@@ -9,7 +9,7 @@ Users
 
 Technologies Used
 
-*Jquery
+* Jquery
 *Handlebars
 *Bootstrap
 *AJAX
