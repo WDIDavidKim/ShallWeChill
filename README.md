@@ -9,10 +9,10 @@ Users
 
 Technologies Used
 
--Jquery
--Handlebars
--Bootstrap
--AJAX
--Express API
--RESTFUL routes
--MongoDB
+Jquery
+Handlebars
+Bootstrap
+AJAX
+Express API
+RESTFUL routes
+MongoDB
