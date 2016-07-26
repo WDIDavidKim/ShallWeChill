@@ -10,8 +10,8 @@ h3 {
 .row {
   text-align: left;
 }
-button {
-  margin-left: 10px;
+btn-success {
+  margin-left: 5px;
 }
 .row {
   margin-right: 100px;
@@ -20,4 +20,10 @@ body {
 }
 .btn-warning {
   margin-left: 900px;
+}
+.btn-danger {
+  margin-left: 10px;
+}
+.btn-info {
+  margin-left: 10px;
 }

@@ -83,6 +83,9 @@ app.get('/', function (req, res) {
     }
 });
 
+app.get('/listings', function (req, res) {
+  res.render('listings'); // you can also use res.sendFile
+});
 
 
 

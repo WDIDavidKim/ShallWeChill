@@ -1,6 +1,6 @@
 .container {
   width: 30%;
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 20px;
   border-radius: 25px;
   box-shadow: 10px 10px 5px #888888;
@@ -8,11 +8,21 @@
 
 h2 {
   text-align: center;
+  color: white;
+  font-size: 40px;
 }
 .form-control {
   margin-top: 20px;
 }
 
-.a {
-  text-align: center;
+a {
+  color: white;
+  margin-left: 155px;
+}
+
+body {
+  background-image: url("http://i.imgur.com/SJOIZjk.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
