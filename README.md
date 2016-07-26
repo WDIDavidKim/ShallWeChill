@@ -1,5 +1,5 @@
 # ShallWeChill
-WDI DIRTY 30!
+:bowtie:WDI DIRTY 30!:bowtie:
 
 Login and look at your profile page.
 
@@ -10,9 +10,10 @@ Users
 Technologies Used
 
 * Jquery
-*Handlebars
-*Bootstrap
-*AJAX
-*Express API
-*RESTFUL routes
-*MongoDB
+* Handlebars
+* Bootstrap
+* AJAX
+* Express API
+* RESTFUL routes
+* MongoDB
+
