@@ -16,8 +16,6 @@ btn-success {
 .row {
   margin-right: 100px;
 }
-body {
-}
 .btn-warning {
   margin-left: 900px;
 }
@@ -26,4 +24,9 @@ body {
 }
 .btn-info {
   margin-left: 10px;
+}
+
+header {
+  background-color: black;
+  color: #737373;
 }

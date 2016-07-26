@@ -11,6 +11,7 @@ $(document).ready(function() {
 
   $eventsList = $('#eventTarget');
 
+
   // TODO: If user != null, append id as data-id to events.
 
   var source = $('#events-template').html();

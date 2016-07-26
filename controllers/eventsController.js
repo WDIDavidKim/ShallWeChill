@@ -54,13 +54,13 @@ db.Event.findById(req.params.eventId, function(err, foundEvent) {
 
 }
 
-// function attendEvent(req,res){
-//   console.log("Looking up attendees for an event");
-//   var eventId = req.params.eventId;
-//   console.log(eventId);
-//   // db.User.find({})
+function attendEvent(req,res){
+  console.log("Looking up attendees for an event");
+  var userId = req.params.eventId;
+  console.log(eventId);
+  // db.User.find({})
 //   // set this person as a user for an event, not a host
-// }
+}
 
 
 function allEventsByUser(req, res) {
